@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Header from './components/Header'
+import Tasks from './components/Tasks';
+import { initialState } from "./store/initialStates"
+
 
 function App() {
+  const [tasks,setTasks] = useState(initialState)
+
+  //Create a task 
+
+  //Delete a task
+  const onDelete = (deletedItemID) => {
+    setTasks(tasks.filter((task)=> task.id !== deletedItemID))
+  }
+
+  //Toggle Done
+
+  //Toggle Show and Hide
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header title={"Task Tracker"}/>
+      <Tasks tasks={tasks} onDelete={onDelete}/>
     </div>
   );
 }
