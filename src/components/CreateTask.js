@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-const CreateTask = () => {
+const CreateTask = ({onCreate}) => {
     const [text,setText] = useState("")
     const [day,setDay] = useState("")
 
@@ -11,9 +11,13 @@ const CreateTask = () => {
     
     const onSubmit = (e) => {
         e.preventDefault() // prevent render the page
-        onCreate({text,day,isDone:false})
-        setText("") // Formun içini boşalttık setText ve setDay le
-        setDay("")
+        if(!text || !day){
+            alert("Please fill both fields")
+        }else{
+            onCreate({text,day,isDone:false})
+            setText("") // Formun içini boşalttık setText ve setDay le
+            setDay("")
+        }
     }
 
     return (

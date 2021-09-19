@@ -12,9 +12,8 @@ function App() {
 
   //Create a task 
   const onCreate = (task) => {
-    const id = Date.now()
-    // console.log(id) uniqueID olusturduk
-    const newTask = {id,...task}
+    const id = Date.now() // console.log(id) uniqueID olusturduk
+    const newTask = {id,...task} // newTask şeklinde bir object tanımladık.initialState objectlerden olusuyor
     setTasks((prevState)=> [...prevState,newTask ])
   }
 
@@ -32,8 +31,8 @@ function App() {
   return (
     <div className="container">
       <Header title={"Task Tracker"}/>
-      <CreateTask/>
-      <TaskList tasks={tasks} onDelete={onDelete}/>
+      <CreateTask onCreate={onCreate}/>
+      <TaskList tasks={tasks} onDelete={onDelete} />
     </div>
   );
 }
