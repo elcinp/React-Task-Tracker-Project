@@ -39,7 +39,11 @@ function App() {
     <div className="container">
       <Header title={"Task Tracker"}/>
       <CreateTask onCreate={onCreate}/>
-      <TaskList tasks={tasks} onDelete={onDelete} toggleDone={toggleDone}/>
+      { tasks.length >0 ? (
+          <TaskList tasks={tasks} onDelete={onDelete} toggleDone={toggleDone}/>
+        ): (
+          <p>No task to show</p>
+        )}
     </div>
   );
 }
