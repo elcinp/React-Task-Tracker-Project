@@ -7,6 +7,7 @@ const Task = ({task,onDelete}) => {
             <h3>
                 {task.text}
                 <FaTimes onClick={()=> {
+                    console.log(task.id)
                     onDelete(task.id)
                 }}/>
             </h3>

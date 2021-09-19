@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 // import {initialState} from '../store/initialStates'
 import Task from './Task'
 
-export default function Tasks({tasks,onDelete}) {
+export default function TaskList({tasks,onDelete}) {
     
     return (
         <div>
