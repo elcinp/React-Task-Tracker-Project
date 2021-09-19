@@ -9,6 +9,7 @@ import { initialState } from "./store/initialStates"
 
 function App() {
   const [tasks,setTasks] = useState(initialState)
+  const [isTaskBarShowed,setisTaskBarShowed] = useState(false)
 
   //Create a task 
   const onCreate = (task) => {
@@ -35,10 +36,13 @@ function App() {
 
   //Toggle Show and Hide
 
+  const toggleShow = () => setisTaskBarShowed( prevState => !prevState)
+
   return (
     <div className="container">
-      <Header title={"Task Tracker"}/>
-      <CreateTask onCreate={onCreate}/>
+      <Header title={"Task Tracker"} isTaskBarShowed={isTaskBarShowed} toggleShow={toggleShow}/>
+      {isTaskBarShowed && <CreateTask onCreate={onCreate}/>}
+
       { tasks.length >0 ? (
           <TaskList tasks={tasks} onDelete={onDelete} toggleDone={toggleDone}/>
         ): (
